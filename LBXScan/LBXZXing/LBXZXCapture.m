@@ -362,7 +362,15 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
     
-    
+  static NSInteger nums = 0;
+         nums++;
+         //3帧识别一帧
+         if (nums % 3 != 0) {
+          
+           return;
+         }
+         
+         
   @autoreleasepool {
     if (!self.cameraIsReady) {
       self.cameraIsReady = YES;
